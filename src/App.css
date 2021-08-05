@@ -28,6 +28,55 @@
   color: #61dafb;
 }
 
+
+.mainBg {
+  background-color: rgb(255, 255, 248);
+  height:500px;
+  background-image: url(bg.jpg);
+  background-size: cover;
+}
+
+
+p {
+  color:#fff;
+  font-size: 24px;
+}
+
+.p1 {
+  padding-top: 35px;
+}
+.hi {
+  color:coral;
+  padding-top: 180px;
+}
+
+.Button {
+  background-color: beige;  
+  border:none;
+  color:coral;
+  margin-top: 40px;
+}
+.Button:hover {
+
+  background-color: coral;
+  color:beige;
+}
+
+.row {
+  margin: 50px 0;
+} 
+
+h4 {
+  margin-top:10px;
+  color:#555;
+}
+
+h5 {
+  color:#555;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
