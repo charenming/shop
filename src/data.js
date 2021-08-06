@@ -1,6 +1,7 @@
-
-export default [
-{
+// eslint-disable-next-line import/no-anonymous-default-export
+export default 
+[
+  {
     id : 0,
     title : "Cascade Bouquet",
     content : "For Outdoor wedding",

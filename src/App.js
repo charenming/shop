@@ -5,6 +5,9 @@ import './App.css';
 import {Navbar,Container,Nav,NavDropdown,Button } from 'react-bootstrap';
 import Data from './data.js';
 
+import {Link, Route, Switch} from 'react-router-dom';
+
+
 function App() {
 
   let [flower, flower변경] = useState(Data);
@@ -31,39 +34,48 @@ function App() {
         </Container>
       </Navbar>
 
-    <div className="mainBg">
-        <h1 className="hi"> Welcome to our tiny flower shop 🌷 </h1>
-        <p className="p1"> Thank you for your visiting our shop. </p>
-        <p>and we wish your pleasant shopping :)</p>
-        <p>
-          <Button variant="primary" className="Button"> Click me </Button>
-        </p>
-    </div>
+    
 
+    <Route exact path="/">
+
+      <div className="mainBg">
+          <h1 className="hi"> Welcome to our tiny flower shop 🌷 </h1>
+          <p className="p1"> Thank you for your visiting our shop. </p>
+          <p>and we wish your pleasant shopping :)</p>
+          <p>
+            <Button variant="primary" className="Button"> Click me </Button>
+          </p>
+      </div>
+
+      <div className="container">
+        <div className="row">
+          {
+            flower.map((a,i)=>{
+              return <Card flower={flower[i]} i={i} key={"https://user-images.githubusercontent.com/88081491/128348641-a48b2555-80ec-48f7-a5bb-9c08be4598e4.jpg","https://user-images.githubusercontent.com/88081491/128349264-9e834506-5784-49c3-8dbf-a34dbed2a200.jpg","https://user-images.githubusercontent.com/88081491/128348722-6418f4cd-718a-499d-85ff-88befab026a7.jpg"} />
+            })
+          }
+        </div>
+      </div>
+    </Route>
+  
+  
+    <Route path="/detail">
     <div className="container">
       <div className="row">
-        {
-          flower.map((a,i)=>{
-            return <Card flower={flower[i]} i={'https://user-images.githubusercontent.com/88081491/128350846-6a056f3b-00c8-41f7-a52a-a59e487ea186.jpg','https://user-images.githubusercontent.com/88081491/128350404-862aef36-09d8-4717-b79d-37cd09e70aef.jpg','https://user-images.githubusercontent.com/88081491/128348722-6418f4cd-718a-499d-85ff-88befab026a7.jpg'}/>
-          })
-        }
-        {/* <Card flower={flower[0]}/>
-        <Card flower={flower[1]}/>
-        <Card flower={flower[2]}/> */}
-        {/* <div className="col-md-4">
-          <img src="https://user-images.githubusercontent.com/88081491/128350404-862aef36-09d8-4717-b79d-37cd09e70aef.jpg" width="60%"></img>
-          <h4>{ flower[1].title}</h4>
-          <h5>{ flower[1].content} </h5>
-          <h5>{ flower[1].price}</h5>
+        <div className="col-md-6">
+          <img src="https://user-images.githubusercontent.com/88081491/128348641-a48b2555-80ec-48f7-a5bb-9c08be4598e4.jpg" width="100%" />
         </div>
-        <div className="col-md-4">
-          <img src="https://user-images.githubusercontent.com/88081491/128348722-6418f4cd-718a-499d-85ff-88befab026a7.jpg" width="60%"></img>
-          <h4>{ flower[2].title}</h4>
-          <h5>{ flower[2].content} </h5>
-          <h5>{ flower[2].price}</h5>
-        </div> */}
+        <div className="col-md-6 mt-4">
+          <h3 className="pt-5">title</h3>
+          <p>content</p>
+          <p>price</p>
+          <button className="btn btn-danger">order</button> 
+        </div>
       </div>
-    </div>
+</div> 
+    </Route>
+
+  
     </div>
   );
 }

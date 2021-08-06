@@ -11,10 +11,12 @@
   color: coral !important; 
 
 }
+
 .mainBg {
-  background: url(bg.jpg) no-repeat;
-  background-position : center;
   height:450px;
+  background: url(bg.jpg) no-repeat;
+  background-position: center;
+  max-width: 100%;
 }
 
 p {
@@ -25,6 +27,7 @@ p {
 .p1 {
   padding-top: 35px;
 }
+
 .hi {
   color:coral;
   padding-top: 100px;
@@ -36,8 +39,8 @@ p {
   color:coral;
   margin-top: 15px;
 }
-.Button:hover {
 
+.Button:hover {
   background-color: coral;
   color:beige;
 }
