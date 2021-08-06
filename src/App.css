@@ -2,44 +2,24 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+.bg-light  {
+  background-color: beige !important;
 }
 
 
+.navbar-brand {
+  color: coral !important; 
+
+}
 .mainBg {
-  background-color: rgb(255, 255, 248);
-  height:500px;
-  background-image: url(bg.jpg);
-  background-size: cover;
+  background: url(bg.jpg) no-repeat;
+  background-position : center;
+  height:450px;
 }
-
 
 p {
-  color:#fff;
-  font-size: 24px;
+  color:rgb(204, 204, 204);
+  font-size: 22px;
 }
 
 .p1 {
@@ -47,14 +27,14 @@ p {
 }
 .hi {
   color:coral;
-  padding-top: 180px;
+  padding-top: 100px;
 }
 
 .Button {
   background-color: beige;  
   border:none;
   color:coral;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 .Button:hover {
 
