@@ -36,7 +36,7 @@ function App() {
 
     
 
-    <Route exact path="/">
+    <Route exact path="/home">
 
       <div className="mainBg">
           <h1 className="hi"> Welcome to our tiny flower shop 🌷 </h1>
@@ -51,13 +51,16 @@ function App() {
         <div className="row">
           {
             flower.map((a,i)=>{
-              return <Card flower={flower[i]} i={i} key={"https://user-images.githubusercontent.com/88081491/128348641-a48b2555-80ec-48f7-a5bb-9c08be4598e4.jpg","https://user-images.githubusercontent.com/88081491/128349264-9e834506-5784-49c3-8dbf-a34dbed2a200.jpg","https://user-images.githubusercontent.com/88081491/128348722-6418f4cd-718a-499d-85ff-88befab026a7.jpg"} />
+              return <Card flower={flower[i]} i={i} />
             })
+
+
+
           }
         </div>
       </div>
     </Route>
-  
+    
   
     <Route path="/detail">
     <div className="container">
@@ -84,10 +87,11 @@ function Card(props) {
   return (
     <div>
         <div className="col-md-4">
-          <img img src={props.i} width="60%"></img>
+          <img img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg' } width="60%"></img>
           <h4>{ props.flower.title}</h4>
           <h5>{ props.flower.content} </h5>
           <h5>{ props.flower.price}</h5>
+          <h5>{ props.i}</h5>
         </div>
     </div>
   )
