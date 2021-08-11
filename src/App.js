@@ -3,14 +3,16 @@
 import React, {useState} from 'react'
 import './App.css';
 import {Navbar,Container,Nav,NavDropdown,Button } from 'react-bootstrap';
-import Data from './data.js';
+import data from './data.js';
+import Card from './components/Card';
+import Home from './components/Home'
 
 import {Link, Route, Switch} from 'react-router-dom';
 
 
 function App() {
 
-  let [flower, flower변경] = useState(Data);
+  let [flower, flower변경] = useState(data);
 
   return (
     <div className="App">
@@ -37,28 +39,8 @@ function App() {
     
 
     <Route exact path="/home">
-
-      <div className="mainBg">
-          <h1 className="hi"> Welcome to our tiny flower shop 🌷 </h1>
-          <p className="p1"> Thank you for your visiting our shop. </p>
-          <p>and we wish your pleasant shopping :)</p>
-          <p>
-            <Button variant="primary" className="Button"> Click me </Button>
-          </p>
-      </div>
-
-      <div className="container">
-        <div className="row">
-          {
-            flower.map((a,i)=>{
-              return <Card flower={flower[i]} i={i} />
-            })
-
-
-
-          }
-        </div>
-      </div>
+      <Home flower={flower} />
+      
     </Route>
     
   
@@ -75,7 +57,7 @@ function App() {
           <button className="btn btn-danger">order</button> 
         </div>
       </div>
-</div> 
+    </div> 
     </Route>
 
   
@@ -83,20 +65,6 @@ function App() {
   );
 }
 
-function Card(props) {
-  console.log("src"+props.flower.image)
-  return (
-    <div>
-        <div className="col-md-4">
-          {/* <img img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg' } width="60%"></img> */}
-          <img src={props.flower.image} />
-          <h4>{ props.flower.title}</h4>
-          <h5>{ props.flower.content} </h5>
-          <h5>{ props.flower.price}</h5>
-          <h5>{ props.i}</h5>
-        </div>
-    </div>
-  )
-}
+
 
 export default App;
