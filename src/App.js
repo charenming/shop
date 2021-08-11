@@ -22,7 +22,7 @@ function App() {
             <Nav className="me-auto">
               <Nav.Link href="#home">The Flower</Nav.Link>
               <Nav.Link href="#link">My page</Nav.Link>
-              <NavDropdown title="Gift" id="basic-nav-dropdown">
+              <NavDropdown title="Product" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Bouquet</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Flower box</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Etc</NavDropdown.Item>
@@ -84,10 +84,12 @@ function App() {
 }
 
 function Card(props) {
+  console.log("src"+props.flower.image)
   return (
     <div>
         <div className="col-md-4">
-          <img img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg' } width="60%"></img>
+          {/* <img img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg' } width="60%"></img> */}
+          <img src={props.flower.image} />
           <h4>{ props.flower.title}</h4>
           <h5>{ props.flower.content} </h5>
           <h5>{ props.flower.price}</h5>
