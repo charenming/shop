@@ -12,33 +12,36 @@
 }
 
 .mainBg {
-  height:500px;
+  min-height:500px;
   background: url(./img/bg.jpg) no-repeat;
   background-size: cover;
-  background-position-y: -700px;
+  /* background-position-y: -700px; */
   max-width: 100%;
+
 }
 
 p {
   color: #fff;
   font-size: 20px;
+
 }
 
 .p1 {
-  padding-top: px;
-  color:#555;
+  padding-top: 45px;
+  color:#666;
+  font-size: 17px;
 }
 
 .hi {
   color:coral;
-  padding-top: 40px;
+  padding-top: 200px;
 }
 
 .Button {
   background-color: beige !important;  
   border:none !important;
   color:coral !important;
-  margin-top: 95px;
+  margin-top: 30px;
 }
 
 .Button:hover {
@@ -53,20 +56,26 @@ p {
 
 
 .flowerImage {
-  width:100%;
-  height: 348px;
+  width: 250px;
+  height: 300px;
   overflow:hidden;
-  position: relative;
 }
 
 .flowerImage img {
   width:100%;
 }
 
-.col-md-4:first-child .flowerImage img {
+/* .col-md-4:first-child .flowerImage img {
   position: absolute;
   right: 0;
   top:-49px;
+} */
+
+.col-md-4 {
+  width:auto;
+  padding-top:0;
+  margin:0 auto;
+  height:200px;
 }
 
 h4 {
@@ -79,6 +88,7 @@ h5 {
   font-weight: lighter;
   font-size: 15px;
 }
+
 
 @keyframes App-logo-spin {
   from {

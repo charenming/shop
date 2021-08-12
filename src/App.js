@@ -5,7 +5,8 @@ import './App.css';
 import {Navbar,Container,Nav,NavDropdown,Button } from 'react-bootstrap';
 import data from './data.js';
 import Card from './components/Card';
-import Home from './components/Home'
+import Home from './components/Home';
+import Bouquet from './components/Bouquet.js';
 
 import {Link, Route, Switch} from 'react-router-dom';
 
@@ -22,14 +23,14 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">The Flower</Nav.Link>
-              <Nav.Link href="#link">My page</Nav.Link>
-              <NavDropdown title="Product" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Bouquet</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Flower box</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Etc</NavDropdown.Item>
+              <Nav.Link as={Link} to="/home">The Flower</Nav.Link>
+              <Nav.Link as={Link} to="/mypage">My page</Nav.Link>
+              <NavDropdown title="product" id="basic-nav-dropdown">
+                <NavDropdown.Item><Link to="/bouquet/0">Bouquet</Link></NavDropdown.Item>
+                <NavDropdown.Item href="#FlowerBox">FlowerBox</NavDropdown.Item>
+                <NavDropdown.Item href="#Etc">Etc</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Wedding</NavDropdown.Item>
+                <NavDropdown.Item href="#Wedding">Wedding</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -37,30 +38,21 @@ function App() {
       </Navbar>
 
     
+      <Switch>
+          <Route exact path="/home">
+            <Home flower={flower} />
+          </Route>
+          
+        
+          <Route path="/bouquet/:id">
+            <Bouquet flower={flower}/>
+          </Route>
 
-    <Route exact path="/home">
-      <Home flower={flower} />
-      
-    </Route>
-    
-  
-    <Route path="/detail">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <img src="https://user-images.githubusercontent.com/88081491/128348641-a48b2555-80ec-48f7-a5bb-9c08be4598e4.jpg" width="100%" />
-        </div>
-        <div className="col-md-6 mt-4">
-          <h3 className="pt-5">title</h3>
-          <p>content</p>
-          <p>price</p>
-          <button className="btn btn-danger">order</button> 
-        </div>
-      </div>
-    </div> 
-    </Route>
+          {/* <Route path="/:id">
+            <div>아무거나적었을 때 이거 보여주셈</div>
+          </Route> */}
 
-  
+      </Switch>
     </div>
   );
 }
