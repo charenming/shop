@@ -17,6 +17,7 @@ import {Link, Route, Switch} from 'react-router-dom';
 function App() {
 
   let [flower, flower변경] = useState(data);
+  let [stock, stock변경] = useState([10,11,12]);
 
   let more = ()=>{
 
@@ -68,7 +69,9 @@ function App() {
           
         
           <Route path="/bouquet/:id">
-            <Bouquet flower={flower}/>
+            <Bouquet flower={flower} 
+                      stock={stock} 
+                      stock변경={stock변경}  />
           </Route>
 
           {/* <Route path="/:id">

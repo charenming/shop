@@ -47,7 +47,11 @@ function Bouquet(props) {
                     <h4 className="pt-5">{찾은상품.title}</h4>
                     <h5>{찾은상품.content}</h5>
                     <h5>{찾은상품.price}원</h5>
-                    <button className="btn btn-danger">order</button> 
+
+                    <Info stock={props.stock}></Info>
+
+                    <button className="btn btn-danger" onClick={ ()=>{props.stock변경 ([9,11,12]) } }>order</button> 
+                    &nbsp;
                     <button className="btn btn-danger" onClick={()=>{
                         history.push('/')
                     }}>back</button> 
@@ -55,6 +59,12 @@ function Bouquet(props) {
             </div>
         </div> 
     )
-};
+}
+
+function Info(props){
+    return (
+        <p>재고 : {props.stock[0]} </p> 
+    )
+}
 
 export default Bouquet
