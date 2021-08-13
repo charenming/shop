@@ -1,6 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Card from './Card.js';
+import './../App.css';
+
 
 function Home(props) {
 
@@ -23,6 +26,25 @@ function Home(props) {
                     })
                 }
                 </div>
+                <button className="btn btn-primary" onClick={()=>{ 
+                    props.more()
+        
+
+                    // // 로딩중이라는 UI 띄움                    
+                    
+                    // axios.get('https://codingapple1.github.io/shop/data2.json')
+                    // .then((result)=>{ 
+                    //     // 로딩중이라는 UI 안보이게 처리
+                    //     console.log(result.data);
+                    //     flower변경( [...flower, ...result.data] );
+                        
+                    // })
+                    // .catch((err)=>{ 
+                    //     // 로딩중이라는 UI 안보이게 처리
+                    //     console.log('실패했어요')
+                    //     console.log(err);
+                    // })
+                }}>more</button>
             </div>
         </div>
     )

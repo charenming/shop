@@ -7,14 +7,36 @@ import data from './data.js';
 import Card from './components/Card';
 import Home from './components/Home';
 import Bouquet from './components/Bouquet.js';
+import axios from 'axios';
 
 import {Link, Route, Switch} from 'react-router-dom';
+
+
 
 
 function App() {
 
   let [flower, flower변경] = useState(data);
 
+  let more = ()=>{
+
+                    // 로딩중이라는 UI 띄움                    
+                    
+                    axios.get('https://codingapple1.github.io/shop/data2.json')
+                    .then((result)=>{ 
+                        // 로딩중이라는 UI 안보이게 처리
+                        flower변경( [...flower, ...result.data] );
+                       
+                    }) .then(()=>{
+                      console.log(flower)
+                    })
+                    .catch((err)=>{ 
+                        // 로딩중이라는 UI 안보이게 처리
+                        console.log('실패했어요')
+                        console.log(err);
+                    })
+                  }
+                  
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -40,7 +62,8 @@ function App() {
     
       <Switch>
           <Route exact path="/home">
-            <Home flower={flower} />
+            <Home flower={flower}
+                  more={more} />
           </Route>
           
         

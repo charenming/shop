@@ -1,13 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 // import styled from 'styled-components';
-
+import './../css/_Bouquet.scss';
 
 // let 박스 = styled.div`
 //     padding: 20px;
 // `;
 
 function Bouquet(props) {
+
+    useEffect(()=>{
+        let timer = setTimeout(()=>{ alert변경(false) },2000);
+        console.log('안녕');
+        return ()=>{clearTimeout(timer) }
+    },[]);  
+
+    let [alert, alert변경] = useState(true);
+    let [inputData, inputData변경] = useState('');
 
     let { id } = useParams();
     let history = useHistory();
@@ -17,10 +26,19 @@ function Bouquet(props) {
     });
     return (
         <div className="container">
-            {/* <div className">
-                <제목 className="red">Detail</제목>
-            </박스> */}
-            
+            <div>
+                <div className="detail">Detail</div>
+            </div>
+            {inputData}
+            <input onChange={(e)=>{ inputData변경(e.target.value) }} />
+            {
+                alert === true
+                ? ( <div className="my-alert2">
+                <p> preorder : 10% discount </p>
+                </div>)
+                :null
+            }
+
             <div className="row">
                 <div className="col-md-6">
                     <img src={찾은상품.image} width="100%" />

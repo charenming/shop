@@ -1,0 +1,49 @@
+@import './reset';
+
+
+// .red {
+//     color:coral;
+// }
+
+// div.container h4 {
+//     color: coral;
+// }
+
+.detail {
+    color:red;
+    font-size: 20px;
+    margin-top:20px;
+}
+
+@mixin 함수() {
+    background-color: #eee;
+    padding: 5px 0;
+    border-radius: 10px;
+    max-width: 500px;
+    width:100%;
+    margin: auto;
+    margin-top: 20px;
+    line-height: 20px;
+}
+
+.my-alert {
+    @include 함수 ()
+}
+
+.my-alert2 {
+    @extend .my-alert;
+    background: coral;
+    line-height: 1.5;
+    color:#fff !important;
+}
+
+
+div.container {
+    h4 {
+        color: coral;
+    }
+    p {
+        color:#555;
+    }
+}
+
