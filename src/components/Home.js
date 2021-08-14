@@ -19,6 +19,7 @@ function Home(props) {
             </div>
             
             <div className="container">
+
                 <div className="row">
                 {
                     props.flower.map((a,i)=>{
@@ -26,6 +27,7 @@ function Home(props) {
                     })
                 }
                 </div>
+
                 <button className="btn btn-primary" onClick={()=>{ 
                     props.more()
         

@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
+
 import {useHistory, useParams} from 'react-router-dom';
 // import styled from 'styled-components';
 import './../css/_Bouquet.scss';
+import {stockContext} from './../App';
+import {CSSTransition} from "react-transition-group";
+
+
+import {Nav} from 'react-bootstrap';
 
 // let 박스 = styled.div`
 //     padding: 20px;
@@ -17,6 +23,8 @@ function Bouquet(props) {
 
     let [alert, alert변경] = useState(true);
     let [inputData, inputData변경] = useState('');
+    let [누른탭, 누른탭변경] = useState(0);
+    let [스위치, 스위치변경] = useState(false);
 
     let { id } = useParams();
     let history = useHistory();
@@ -57,8 +65,41 @@ function Bouquet(props) {
                     }}>back</button> 
                 </div>
             </div>
-        </div> 
+
+
+<Nav className="mt-5" variant="tabs" defaultActiveKey="/home">
+  <Nav.Item>
+    <Nav.Link>Active</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link eventKey="link-0" onClick={()=>{누른탭변경(0) }}>Option 1</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link eventKey="link-1" onClick={()=>{누른탭변경(1)}}>Option 2</Nav.Link>
+  </Nav.Item>
+</Nav>
+
+    <CSSTransition in={스위치} classNames="wow" timeout={500}> 
+        <TabContent 누른탭={누른탭} 스위치변경={스위치변경}/>
+    </CSSTransition>
+
+    </div> 
     )
+}
+
+function TabContent(props) {
+
+    useEffect(()=>{
+        props.스위치변경(true);
+    });
+
+    if (props.누른탭 === 0) {
+        return  <div>0번째 내용입니다.</div>
+    } else if (props.누른탭 === 1) {
+        return  <div>1번째 내용입니다.</div>
+    } else if (props.누른탭 === 1) {
+        return  <div>2번째 내용입니다.</div>
+    }    
 }
 
 function Info(props){

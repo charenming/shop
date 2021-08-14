@@ -1,13 +1,14 @@
 @import './reset';
 
+.wow-enter {
+// 애니 시작할 때 적용할 css
+    opacity: 0;
+}
 
-// .red {
-//     color:coral;
-// }
-
-// div.container h4 {
-//     color: coral;
-// }
+.wow-enter-active {
+    opacity: 1;
+    transition: all 500ms;
+}
 
 .detail {
     color:red;

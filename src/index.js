@@ -3,14 +3,45 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import {Provider} from 'react-redux';
+
 // import * as serviceWorker from './serviceWorker';
 
 import { HashRouter } from 'react-router-dom';
+import { createStore } from 'redux';
+
+
+let 초기값 = [
+  { id:0, name:'아름다운 꽃', quan: 2 },
+  { id:1, name:'플라워박스', quan: 1 }
+];
+
+function reducer(state = 초기값, 액션){
+  if ( 액션.type === '수량증가' ){
+
+    let copy = [...state];
+    copy[0].quan++;
+    return copy
+  } else if (액션.type === '수량감소'){
+    let copy = [...state];
+    copy[0].quan--;
+    return copy
+  
+    } else {
+      return state
+    }
+
+}
+
+let store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
+      <Provider store={store}>
     <App />
+      </Provider>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')

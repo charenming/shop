@@ -8,11 +8,12 @@ import Card from './components/Card';
 import Home from './components/Home';
 import Bouquet from './components/Bouquet.js';
 import axios from 'axios';
-
+import { TabContent } from 'react-bootstrap';
 import {Link, Route, Switch} from 'react-router-dom';
 
+import Cart from './components/Card';
 
-
+let stockContext= React.createContext(); 
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
                     .then((result)=>{ 
                         // 로딩중이라는 UI 안보이게 처리
                         flower변경( [...flower, ...result.data] );
-                       
+
                     }) .then(()=>{
                       console.log(flower)
                     })
@@ -47,7 +48,7 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/home">The Flower</Nav.Link>
-              <Nav.Link as={Link} to="/mypage">My page</Nav.Link>
+              <Nav.Link as={Link} to="/cart">My page</Nav.Link>
               <NavDropdown title="product" id="basic-nav-dropdown">
                 <NavDropdown.Item><Link to="/bouquet/0">Bouquet</Link></NavDropdown.Item>
                 <NavDropdown.Item href="#FlowerBox">FlowerBox</NavDropdown.Item>
@@ -78,6 +79,12 @@ function App() {
             <div>아무거나적었을 때 이거 보여주셈</div>
           </Route> */}
 
+
+          <Route path="/cart">
+            <Cart></Cart>
+          </Route>
+
+          
       </Switch>
     </div>
   );
