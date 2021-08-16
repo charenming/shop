@@ -11,7 +11,7 @@ import axios from 'axios';
 import { TabContent } from 'react-bootstrap';
 import {Link, Route, Switch} from 'react-router-dom';
 
-import Cart from './components/Card';
+import Cart from './components/Cart';
 
 let stockContext= React.createContext(); 
 

@@ -5,6 +5,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import './../css/_Bouquet.scss';
 import {stockContext} from './../App';
 import {CSSTransition} from "react-transition-group";
+import {connect} from 'react-redux';
 
 
 import {Nav} from 'react-bootstrap';
@@ -58,7 +59,11 @@ function Bouquet(props) {
 
                     <Info stock={props.stock}></Info>
 
-                    <button className="btn btn-danger" onClick={ ()=>{props.stock변경 ([9,11,12]) } }>order</button> 
+                    <button className="btn btn-danger" onClick={ ()=>{
+                        props.stock변경 ([9,11,12]);
+                        props.dispatch({type:'항목추가', payload: {id:2, name:'새로운상품', quan:1} });
+                        history.push('/cart');
+                    } }>order</button> 
                     &nbsp;
                     <button className="btn btn-danger" onClick={()=>{
                         history.push('/')
@@ -108,4 +113,13 @@ function Info(props){
     )
 }
 
-export default Bouquet
+function state를props화(state){
+    console.log(state);
+    return {
+        state : state.reducer,
+        alert열렸니 : state.reducer2
+    }
+}
+
+export default connect(state를props화)(Bouquet)
+

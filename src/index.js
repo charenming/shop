@@ -9,8 +9,19 @@ import {Provider} from 'react-redux';
 // import * as serviceWorker from './serviceWorker';
 
 import { HashRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
+
+let alert초기값 = true;
+
+function reducer2(state = alert초기값, 액션){
+  if ( 액션.type === 'alert닫기'){
+    state = false; 
+    return state
+  } else {
+    return state
+  }
+}
 
 let 초기값 = [
   { id:0, name:'아름다운 꽃', quan: 2 },
@@ -18,8 +29,12 @@ let 초기값 = [
 ];
 
 function reducer(state = 초기값, 액션){
-  if ( 액션.type === '수량증가' ){
-
+  if (액션.type === '항목추가'){
+    let copy = [...state];
+    copy.push(액션.payload);
+    return copy
+  
+  } else if ( 액션.type === '수량증가' ){
     let copy = [...state];
     copy[0].quan++;
     return copy
@@ -34,7 +49,7 @@ function reducer(state = 초기값, 액션){
 
 }
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({reducer,reducer2}));
 
 ReactDOM.render(
   <React.StrictMode>
