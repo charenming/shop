@@ -1,12 +1,13 @@
 /* eslint-disable */
 
-import React, {useState} from 'react'
+import React, {useState, lazy, Suspense} from 'react'
 import './App.css';
 import {Navbar,Container,Nav,NavDropdown,Button } from 'react-bootstrap';
 import data from './data.js';
 import Card from './components/Card';
 import Home from './components/Home';
-import Bouquet from './components/Bouquet.js';
+// import Bouquet from './components/Bouquet.js';
+let Bouquet = lazy(()=>{ return import('./components/Bouquet.js') });
 import axios from 'axios';
 import { TabContent } from 'react-bootstrap';
 import {Link, Route, Switch} from 'react-router-dom';
@@ -16,6 +17,7 @@ import Cart from './components/Cart';
 let stockContext= React.createContext(); 
 
 function App() {
+  const repository = "/flowerShop"; 
 
   let [flower, flower변경] = useState(data);
   let [stock, stock변경] = useState([10,11,12]);
@@ -43,15 +45,15 @@ function App() {
     <div className="App">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">🌷 Flower shop 🌷</Navbar.Brand>
+          <Navbar.Brand as={Link} to={repository+"/"}>🌷 Flower shop 🌷</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/home">The Flower</Nav.Link>
-              <Nav.Link as={Link} to="/cart">My page</Nav.Link>
+              <Nav.Link as={Link} to={repository+"/"}>The Flower</Nav.Link>
+              <Nav.Link as={Link} to={repository+"/cart"}>My page</Nav.Link>
               <NavDropdown title="product" id="basic-nav-dropdown">
-                <NavDropdown.Item><Link to="/bouquet/0">Bouquet</Link></NavDropdown.Item>
-                <NavDropdown.Item href="#FlowerBox">FlowerBox</NavDropdown.Item>
+                <NavDropdown.Item><Link to={repository+"/bouquet/0"}>Bouquet</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to={repository+"/FlowerBox"} >FlowerBox</Link></NavDropdown.Item>
                 <NavDropdown.Item href="#Etc">Etc</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#Wedding">Wedding</NavDropdown.Item>
@@ -63,16 +65,18 @@ function App() {
 
     
       <Switch>
-          <Route exact path="/home">
+          <Route exact path= {repository+"/"}>
             <Home flower={flower}
                   more={more} />
           </Route>
           
         
-          <Route path="/bouquet/:id">
+          <Route path={repository+"/bouquet/:id"}>
+            <Suspense fallback={<div>loading</div>}>
             <Bouquet flower={flower} 
                       stock={stock} 
                       stock변경={stock변경}  />
+            </Suspense>
           </Route>
 
           {/* <Route path="/:id">
@@ -80,7 +84,7 @@ function App() {
           </Route> */}
 
 
-          <Route path="/cart">
+          <Route path={repository+"/cart"}>
             <Cart></Cart>
           </Route>
 

@@ -18,7 +18,6 @@ function Bouquet(props) {
 
     useEffect(()=>{
         let timer = setTimeout(()=>{ alert변경(false) },2000);
-        console.log('안녕');
         return ()=>{clearTimeout(timer) }
     },[]);  
 
@@ -26,10 +25,26 @@ function Bouquet(props) {
     let [inputData, inputData변경] = useState('');
     let [누른탭, 누른탭변경] = useState(0);
     let [스위치, 스위치변경] = useState(false);
-
     let { id } = useParams();
     let history = useHistory();
     // let 찾은상품 = props.flower.find(x => x.id == id);
+
+    let [click, setClick] = useState(false);
+
+    useEffect( ()=>{
+        let arr = localStorage.getItem('watched');
+        if (arr == null) {arr = [] } else { arr = JSON.parse(arr) }
+
+        arr.push(id);
+        arr = new Set(arr);
+        arr = [...arr];
+
+        localStorage.setItem('watched', JSON.stringify(arr)); 
+
+    },[] );
+
+
+
     let 찾은상품 = props.flower.find(function(상품){
         return 상품.id == id
     });
@@ -43,7 +58,7 @@ function Bouquet(props) {
             {
                 alert === true
                 ? ( <div className="my-alert2">
-                <p> preorder : 10% discount </p>
+                <p> preorder : 10% discount </p>    
                 </div>)
                 :null
             }
@@ -61,7 +76,7 @@ function Bouquet(props) {
 
                     <button className="btn btn-danger" onClick={ ()=>{
                         props.stock변경 ([9,11,12]);
-                        props.dispatch({type:'항목추가', payload: {id:2, name:'새로운상품', quan:1} });
+                        props.dispatch({type:'항목추가', payload: {id:찾은상품.id, name:찾은상품.title, quan:1} });
                         history.push('/cart');
                     } }>order</button> 
                     &nbsp;
